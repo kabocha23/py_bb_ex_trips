@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <title>Destination</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'travels/css/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+  <head>
+  <body> 
+        <a href='/travels'>Home</a>
+        <a href='/'>Logout</a>
+        <div class="container">
+            <h1>{{ this_trip.destination }}</h1>
+            <p>Planned By: {{ this_trip.travelers.name }}</p>
+            <p>Description: {{ this_trip.plan }}</p>
+            <p>Travel Date From: {{ this_trip.travel_start_date }}</p>
+            <p>Travel Date To: {{ this_trip.travel_end_date }}</p>
+            <h3>Other users joining the trip:</h3>
+            {% for planner in in_their_travel_plans %}
+            <!-- need to edit to exclude logged in user -->
+              {% if planner.id != request.session.user_id %}
+                <p>{{ planner.name }}</p>
+              {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+  </body>
+</html>

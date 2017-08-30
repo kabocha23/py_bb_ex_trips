@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Trip Schedule</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'travels/css/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+  <head>
+  <body> 
+    <div class='top_bar'>
+    <!-- session name -->
+        <h1>Hello, {{ request.session.name }}!</h1>
+         <a href='/'>Logout</a> 
+    </div>
+    <div class='your_trip_list'>
+        <h2>Your Trip Schedules:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td>Destination</td>
+                    <td>Travel Start Date</td>
+                    <td>Travel End Date</td>
+                    <td>Plan</td>
+                </tr>    
+            </thead>
+            <tbody>
+                {% for trips in top_list %}
+                <tr>
+                    <td><a href='/travels/destination/{{ trips.id }}'>{{ trips.destination }}</a></td>
+                    <td>{{ trips.travel_start_date }}</td>
+                    <td>{{ trips.travel_end_date }}</td>
+                    <td>{{ trips.plan }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class='others_trip_list'>
+        <h2>Other Users' Travel Plans:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Destination</td>
+                    <td>Travel Start Date</td>
+                    <td>Travel End Date</td>
+                    <td>Do You Want to Join?</td>
+                </tr>    
+            </thead>
+            <tbody>
+                {% for trips in bottom_list %}
+                <tr>
+                    <td>{{ trips.travelers.name }}</td>
+                    <td><a href='/travels/destination/{{ trips.id }}'>{{ trips.destination }}</a></td>
+                    <td>{{ trips.travel_start_date }}</td>
+                    <td>{{ trips.travel_end_date }}</td>
+                    <td><a href='/add_to_mylist/{{ trips.id }}'>Join</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div> 
+    <a href='/travels/destination/create'>Add Travel Plan</a>
+  </body>
+</html>
