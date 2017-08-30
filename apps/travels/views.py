@@ -94,8 +94,6 @@ def add_trip(request):
             errors.append("Travel Date From field cannot be empty!")
         if request.POST['new_td_to'] == '':
             errors.append("Travel Date To field cannot be empty!")
-        if request.POST['new_td_from'] < datetime.date.today():
-            errors.append("Travel Date must be today or later")
         if request.POST['new_td_to'] < request.POST['new_td_from']:
             errors.append("Travel End Date must be after Travel Start Date")          
         if len(errors) > 0:
