@@ -14,5 +14,5 @@ urlpatterns = [
     # POST ROUTES
     url(r'^login$', views.login, name='post_login'),
     url(r'^register$', views.register, name='post_register'),
-    url(r'^travels/add$', views.add_trip, name='post_add_trip'),
+    url(r'^travels/destination/add$', views.add_trip, name='post_add_trip'),
 ]
