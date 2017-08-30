@@ -100,7 +100,7 @@ def add_trip(request):
             print 'errors exist'
             for err in errors:
                 messages.error(request, err)
-            return redirect('/travels/create')
+            return redirect('/travels/destination/create')
         else:
             newly_planned_trip = Trip.objects.create(
                 destination=request.POST['new_destination'], 
