@@ -10,7 +10,7 @@ idna==2.6
 oauthlib==2.0.2
 prompt-toolkit==1.0.15
 pycparser==2.18
-Pygments==2.2.0
+Pygments==2.7.4
 python-openid==2.2.5
 pytz==2017.2
 requests==2.18.4
